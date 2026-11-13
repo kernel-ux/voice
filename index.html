@@ -103,35 +103,35 @@ button.row{cursor:pointer;transition:background .15s}button.row:active{backgroun
 </style></head><body>
 <div class="top">
   <div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4Zm6-4a1 1 0 1 1 2 0 8 8 0 0 1-7 7.94V21h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2.06A8 8 0 0 1 4 11a1 1 0 1 1 2 0 6 6 0 0 0 12 0Z"/></svg></div>
-  <div><div class="brand">Voice Khata</div><div class="slogan">Bolo, aur khata likh jaayega</div></div>
+  <div><div class="brand">Voice Khata</div><div class="slogan" id="slogan">Bolo, aur khata likh jaayega</div></div>
   <div class="ctl">
-    <select id="lang" aria-label="Bolne ki bhasha"><option value="hi-IN">हिन्दी</option><option value="en-IN">English</option></select>
-    <button class="icon" id="snd" aria-label="Awaaz chalu ya band" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg></button>
-    <button class="icon" id="cfg" aria-label="Settings aur data"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
+    <select id="lang" aria-label="Language"><option value="hi-IN">हिन्दी</option><option value="en-IN">English</option></select>
+    <button class="icon" id="snd" aria-label="Sound on or off" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg></button>
+    <button class="icon" id="cfg" aria-label="Settings and data"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></button>
   </div>
 </div>
 
 <div class="scroll"><div class="wrap">
   <div class="hero">
-    <div class="hl">Kul baaki</div>
+    <div class="hl" id="lTotal">Kul baaki</div>
     <div class="big" id="tot">₹0</div>
-    <div class="two"><div><span>Aaj ka udhaar</span><b id="ud">₹0</b></div><div><span>Aaj ki wasooli</span><b id="wa">₹0</b></div></div>
+    <div class="two"><div><span id="lTodayCr">Aaj ka udhaar</span><b id="ud">₹0</b></div><div><span id="lTodayPay">Aaj ki wasooli</span><b id="wa">₹0</b></div></div>
     <div class="top1" id="top1"></div>
   </div>
 
-  <div class="sec"><h2>Aise bolo</h2></div>
+  <div class="sec"><h2 id="lTry">Aise bolo</h2></div>
   <div class="try" id="ex"></div>
 
-  <div class="sec"><h2>Customers<small id="cc"></small></h2><button class="btn" id="addtog">Naya customer</button></div>
+  <div class="sec"><h2><span id="lCust">Customers</span><small id="cc"></small></h2><button class="btn" id="addtog">Naya customer</button></div>
   <div class="list">
     <div id="addbox" hidden><input id="nn" placeholder="Naam" aria-label="Naam"><input id="nt" placeholder="Pehchaan, jaise Sharma" aria-label="Pehchaan"><button class="btn pri" id="na">Jodo</button></div>
     <div id="cl"></div>
   </div>
 
-  <div class="sec"><h2>Pichla hisaab</h2><button class="btn" id="undo">Pichli entry hatao</button></div>
+  <div class="sec"><h2 id="lHist">Pichla hisaab</h2><button class="btn" id="undo">Pichli entry hatao</button></div>
   <div class="list" id="hl"></div>
 
-  <div class="foot"><span>Data sirf is phone mein save hota hai. Hatane ke liye ⋮ dabao.</span></div>
+  <div class="foot"><span id="lFoot">Data sirf is phone mein save hota hai. Hatane ke liye ⋮ dabao.</span></div>
 </div></div>
 
 <div class="dock"><div class="dockin">
@@ -141,8 +141,8 @@ button.row{cursor:pointer;transition:background .15s}button.row:active{backgroun
   <div id="chips"></div>
   <div id="choices"></div>
   <div class="bar">
-    <div class="field"><input id="ti" placeholder="Ya yahan type karo" autocomplete="off" aria-label="Type karke bolo"><button id="go" aria-label="Bhejo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
-    <button id="mic" aria-label="Dabao aur bolo"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4Zm6-4a1 1 0 1 1 2 0 8 8 0 0 1-7 7.94V21h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2.06A8 8 0 0 1 4 11a1 1 0 1 1 2 0 6 6 0 0 0 12 0Z"/></svg></button>
+    <div class="field"><input id="ti" placeholder="Ya yahan type karo" autocomplete="off" aria-label="Type and send"><button id="go" aria-label="Send"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    <button id="mic" aria-label="Tap and speak"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4Zm6-4a1 1 0 1 1 2 0 8 8 0 0 1-7 7.94V21h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-2.06A8 8 0 0 1 4 11a1 1 0 1 1 2 0 6 6 0 0 0 12 0Z"/></svg></button>
   </div>
 </div></div>
 <div class="ov" id="ov"></div>
@@ -156,7 +156,136 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 let S={cust:[],ent:[],n:1,last:0},pending=null,T0=0;
 const KEY='voicekhata.v1';
 
-/* ---------- storage ---------- */
+/* ================= LANGUAGE PACKS ================= */
+const LANGS={
+hi:{
+  slogan:'Bolo, aur khata likh jaayega',
+  total:'Kul baaki', todayCr:'Aaj ka udhaar', todayPay:'Aaj ki wasooli',
+  topMost:(n,m)=>'Sabse zyada baaki: '+n+', '+m,
+  tryH:'Aise bolo', customers:'Customers', newCust:'Naya customer',
+  namePh:'Naam', tagPh:'Pehchaan, jaise Sharma', addBtn:'Jodo',
+  history:'Pichla hisaab', undoBtn:'Pichli entry hatao',
+  foot:'Data sirf is phone mein save hota hai. Hatane ke liye ⋮ dabao.',
+  hintIdle:'Mic dabao aur bolo', hintListen:'Sun raha hoon', hintSpeak:'Bol raha hoon',
+  idleReply:'Ek entry bolo, jaise “Suresh ka 150 udhaar”.',
+  typePh:'Ya yahan type karo',
+  rowSub:'Hisaab dekho', baaki:'baaki', adv:'advance', clear:'saaf',
+  emptyCust:'Khata khaali hai. Mic dabao aur bolo, jaise “Ramesh ka 100 udhaar”.',
+  emptyEnt:'Abhi koi entry nahi.',
+  cr:'udhaar', pay:'jama',
+  sayBal:'Balance sunao', delCust:'Customer hatao', noTag:'Koi pehchaan nahi',
+  settings:'Settings', how:'Yeh kaise kaam karta hai', howSub:'Awaaz se entry tak ka poora flow',
+  voiceTest:'Awaaz check', voiceTestSub:'Phone bol raha hai ya nahi, test karo',
+  demo:'Demo data bharo', demoSub:'Do Ramesh aur ek Suresh ke saath, try karne ke liye',
+  clearAll:'Saara data hatao', clearAllSub:'Sab customers aur entries hamesha ke liye hat jayengi',
+  savedInfo:(c,e)=>c+' customers aur '+e+' entries is phone mein save hain.',
+  howTitle:'Yeh kaise kaam karta hai', howP:'Har entry in paanch kadam se guzarti hai.',
+  steps:[['Mic dabao aur bolo','Browser ki speech recognition awaaz ko text banati hai.'],
+         ['Text saaf hota hai','Hindi script Roman banti hai, aur “dhai sau” jaise shabd 250 ban jaate hain.'],
+         ['Rules samajhte hain','Naam, rakam, udhaar ya jama, aur kal ya parso jaisi date alag nikalte hain. Koi AI call nahi.'],
+         ['Naam pehchaan','Milte-julte naam match hote hain, bhai ya ji jaise shabd hat jaate hain. Do ek jaise naam hon to puchta hai.'],
+         ['Save aur jawab','Entry phone mein save hoti hai, balance code se nikalta hai, phir awaaz mein bolta hai.']],
+  soundOn:'Awaaz chalu', soundOff:'Awaaz band', langToast:'Ab Hindi mode',
+  examples:['Ramesh ka 340 udhaar, kal 200 diya tha','nahi, 430','Ramesh ka total?','Suresh ka dhai sau udhaar','Suresh ka total'],
+  m:{
+    askName:'Kiska hisaab? Naam bolo.',
+    askType:(n,a)=>n+' ka '+a+': udhaar ya jama? Dobara bolo.',
+    added:(n,a,t,o)=>n+' ka '+a+(t==='cr'?' udhaar':' jama')+(o?' ('+dword(o)+')':'')+' likh diya.',
+    totalOf:(n,b)=>b>0?n+' ka total '+b+' baaki.':b<0?n+' ka '+(-b)+' advance hai.':n+' ka hisaab saaf hai.',
+    bal:(n,b)=>b>0?n+' ka '+b+' rupaye baaki hai.':b<0?n+' ne '+(-b)+' rupaye zyada diye hain.':n+' ka hisaab saaf hai.',
+    askTotalName:'Kiska total? Naam bolo.',
+    newCustAdded:n=>'Naya customer '+n+' joda.',
+    notUnderstood:'Samajh nahi aaya. Aise bolo: “Ramesh ka 340 udhaar” ya “Ramesh ka total?”',
+    whichOne:n=>'Kaunsa '+n+'?', whichCust:'Kaun sa customer? Pakka karo.',
+    newOpt:'naya', newPrefix:'Naya: ',
+    noEntryFix:'Sudharne ke liye pichli entry nahi mili.',
+    fixed:(n,a,t,b)=>'Theek hai, '+n+' ka '+a+(t==='cr'?' udhaar':' jama')+' kar diya. Total '+Math.abs(b)+(b>=0?' baaki.':' advance.'),
+    whichEntry:'Kaunsi entry sudharni hai?',
+    nothingUndo:'Hatane ke liye kuch nahi.',
+    undone:(n,a)=>n+' ka '+a+' hata diya.',
+    micNo:'Is browser mein mic nahi chalta. Chrome (Android) kholo, ya neeche type karo.',
+    micDenied:'Mic ki permission band hai. Page ko seedha Chrome tab mein kholo aur Allow karo, ya neeche type karo.',
+    micErr:e=>'Awaaz sunai nahi di ('+e+'). Dobara dabao.',
+    noSpeech:'Is browser mein awaaz support nahi hai. Chrome use karo.',
+    noVoice:'Awaaz nahi nikli. Media volume badhao, ya Settings mein Text-to-speech voice install karo.',
+    speakErr:e=>'Awaaz error: '+e,
+    custDeleted:n=>n+' hata diya.',
+    cleared:'Saara data hat gaya. Ab pehla customer bolo, jaise “Ramesh ka 100 udhaar”.',
+    demoLoaded:'Demo data aa gaya.',
+    voiceOk:'Namaste. Agar yeh sunai de raha hai, to awaaz theek hai.',
+    addedCust:n=>n+' jod diya.',
+    confirmTitleDel:n=>n+' hatao?', confirmBodyDel:'Iski saari entries bhi hat jayengi. Yeh wapas nahi hoga.', confirmOkDel:'Haan, hatao',
+    confirmTitleClear:'Saara data hatao?', confirmBodyClear:'Sab customers aur entries hat jayengi. Yeh wapas nahi hoga.', confirmOkClear:'Haan, sab hatao',
+    confirmTitleDemo:'Demo data bharo?', confirmBodyDemo:'Abhi ka saara data hat jayega aur demo customers aa jayenge.', confirmOkDemo:'Haan, bharo',
+    no:'Nahi, rehne do'
+  }
+},
+en:{
+  slogan:'Speak, and your khata writes itself',
+  total:'Total due', todayCr:'Given today', todayPay:'Collected today',
+  topMost:(n,m)=>'Most due: '+n+', '+m,
+  tryH:'Try saying', customers:'Customers', newCust:'New customer',
+  namePh:'Name', tagPh:'Tag, e.g. Sharma', addBtn:'Add',
+  history:'Recent entries', undoBtn:'Remove last entry',
+  foot:'Data stays on this phone only. Tap ⋮ to clear it.',
+  hintIdle:'Tap the mic and speak', hintListen:'Listening', hintSpeak:'Speaking',
+  idleReply:'Say an entry, like “Suresh took 150 loan”.',
+  typePh:'Or type here',
+  rowSub:'View account', baaki:'due', adv:'advance', clear:'settled',
+  emptyCust:'No customers yet. Tap the mic and say “Ramesh took 100 loan”.',
+  emptyEnt:'No entries yet.',
+  cr:'credit', pay:'payment',
+  sayBal:'Speak balance', delCust:'Remove customer', noTag:'No tag',
+  settings:'Settings', how:'How this works', howSub:'The full flow from voice to entry',
+  voiceTest:'Test the voice', voiceTestSub:'Check if the phone speaks out loud',
+  demo:'Load demo data', demoSub:'Two Rameshes and a Suresh, to try things out',
+  clearAll:'Clear all data', clearAllSub:'All customers and entries will be deleted forever',
+  savedInfo:(c,e)=>c+' customers and '+e+' entries saved on this phone.',
+  howTitle:'How this works', howP:'Every entry goes through five steps.',
+  steps:[['Tap the mic and speak','The browser\'s speech recognition turns your voice into text.'],
+         ['Text is cleaned up','Hindi script becomes Roman, and words like “dhai sau” become 250.'],
+         ['Rules do the thinking','Name, amount, credit or payment, and words like yesterday are pulled apart. No AI call.'],
+         ['Names are matched','Similar names match, and words like bhai or ji are ignored. If two names look alike, it asks you.'],
+         ['Saved and spoken','The entry is stored on the phone, the balance is computed, then spoken aloud.']],
+  soundOn:'Sound on', soundOff:'Sound off', langToast:'English mode',
+  examples:['Ramesh took 340 loan, paid 200 yesterday','no, 430','Ramesh total?','Suresh took two hundred fifty loan','Suresh total'],
+  m:{
+    askName:'Whose account? Say a name.',
+    askType:(n,a)=>a+' for '+n+': credit or payment? Say it again.',
+    added:(n,a,t,o)=>(t==='cr'?'Added '+a+' credit for '+n:'Added '+a+' payment from '+n)+(o?' ('+dword(o)+')':'')+'.',
+    totalOf:(n,b)=>b>0?n+' owes '+b+'.':b<0?n+' has '+(-b)+' in advance.':n+' is all settled.',
+    bal:(n,b)=>b>0?n+' owes '+b+' rupees.':b<0?n+' has paid '+(-b)+' rupees extra.':n+' is all settled.',
+    askTotalName:'Whose total? Say a name.',
+    newCustAdded:n=>'Added new customer '+n+'.',
+    notUnderstood:'Didn\'t catch that. Try “Ramesh took 340 loan” or “Ramesh total?”',
+    whichOne:n=>'Which '+n+'?', whichCust:'Which customer? Please confirm.',
+    newOpt:'new', newPrefix:'New: ',
+    noEntryFix:'No recent entry to correct.',
+    fixed:(n,a,t,b)=>'Fixed. '+n+' now has '+a+' as '+(t==='cr'?'credit':'payment')+'. Total '+Math.abs(b)+(b>=0?' due.':' in advance.'),
+    whichEntry:'Which entry should I fix?',
+    nothingUndo:'Nothing to remove.',
+    undone:(n,a)=>'Removed '+a+' from '+n+'.',
+    micNo:'Mic does not work in this browser. Open in Chrome (Android), or type below.',
+    micDenied:'Mic permission is blocked. Open the page directly in a Chrome tab and tap Allow, or type below.',
+    micErr:e=>'Could not hear that ('+e+'). Tap again.',
+    noSpeech:'This browser has no speech support. Use Chrome.',
+    noVoice:'No sound came out. Raise media volume, or install a Text-to-speech voice in Settings.',
+    speakErr:e=>'Speech error: '+e,
+    custDeleted:n=>'Removed '+n+'.',
+    cleared:'All data cleared. Now say your first customer, like “Ramesh took 100 loan”.',
+    demoLoaded:'Demo data loaded.',
+    voiceOk:'Hello. If you can hear this, the sound is working.',
+    addedCust:n=>'Added '+n+'.',
+    confirmTitleDel:n=>'Remove '+n+'?', confirmBodyDel:'All of this customer\'s entries will be removed too. This cannot be undone.', confirmOkDel:'Yes, remove',
+    confirmTitleClear:'Clear all data?', confirmBodyClear:'All customers and entries will be deleted. This cannot be undone.', confirmOkClear:'Yes, clear all',
+    confirmTitleDemo:'Load demo data?', confirmBodyDemo:'Current data will be replaced with demo customers.', confirmOkDemo:'Yes, load',
+    no:'No, leave it'
+  }
+}};
+let LANG='hi',L=LANGS.hi,MG=LANGS.hi.m;
+function setLang(){LANG=$('lang').value.startsWith('en')?'en':'hi';L=LANGS[LANG];MG=L.m;}
+
+/* ================= STORAGE ================= */
 function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){}if(!S.cust.length)seed()}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 const dstr=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
@@ -172,12 +301,16 @@ const nz=s=>s.toLowerCase().replace(/(.)\1+/g,'$1');
 const dup=c=>S.cust.filter(x=>nz(x.name)===nz(c.name)).length>1;
 const label=c=>c.name+(c.tag?' ('+c.tag+')':'');
 const spoken=c=>dup(c)&&c.tag?c.name+' '+c.tag:c.name;
-const dword=o=>o===0?'aaj':o===-1?'kal':o===-2?'parso':(-o)+' din pehle';
-const money=n=>'₹'+n.toLocaleString('en-IN');
+
+/* ================= TEXT HELPERS ================= */
+function dword(o){
+  if(LANG==='en')return o===0?'today':o===-1?'yesterday':o===-2?'day before yesterday':(-o)+' days ago';
+  return o===0?'aaj':o===-1?'kal':o===-2?'parso':(-o)+' din pehle'}
 function fmtDate(iso){const t=new Date(dstr(new Date())),d=new Date(iso),k=Math.round((t-d)/864e5);
+  if(LANG==='en')return k<=0?'today':k===1?'yesterday':k===2?'day before yesterday':d.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
   return k<=0?'aaj':k===1?'kal':k===2?'parso':d.toLocaleDateString('en-IN',{day:'numeric',month:'short'})}
 
-/* ---------- Devanagari to Roman (so Hindi-script STT output still parses) ---------- */
+/* ================= DEVANAGARI -> ROMAN ================= */
 const DC={'क':'k','ख':'kh','ग':'g','घ':'gh','च':'ch','छ':'chh','ज':'j','झ':'jh','ट':'t','ठ':'th','ड':'d','ढ':'dh','त':'t','थ':'th','द':'d','ध':'dh','न':'n','प':'p','फ':'f','ब':'b','भ':'bh','म':'m','य':'y','र':'r','ल':'l','व':'v','श':'sh','ष':'sh','स':'s','ह':'h','ण':'n','ळ':'l'};
 const DV={'अ':'a','आ':'aa','इ':'i','ई':'ee','उ':'u','ऊ':'oo','ए':'e','ऐ':'ai','ओ':'o','औ':'au','ा':'aa','ि':'i','ी':'ee','ु':'u','ू':'oo','े':'e','ै':'ai','ो':'o','ौ':'au','ं':'n','ँ':'n','ः':'h'};
 function tr(s){if(!/[\u0900-\u097F]/.test(s))return s;
@@ -187,62 +320,83 @@ function tr(s){if(!/[\u0900-\u097F]/.test(s))return s;
     else if(DV[c])o+=DV[c];else if(c!=='्'&&c!=='़')o+=c}
   return o}
 
-/* ---------- vocab (written in collapsed form: aa->a, ee->e) ---------- */
-const U={};'ek 1,do 2,teen 3,char 4,panch 5,chhe 6,che 6,saat 7,sat 7,aath 8,ath 8,nau 9,das 10,gyarah 11,barah 12,terah 13,chaudah 14,pandrah 15,solah 16,satrah 17,atharah 18,unnis 19,bis 20,tis 30,chalis 40,pachas 50,saath 60,sath 60,sattar 70,assi 80,nabbe 90'.split(',').forEach(p=>{const[a,b]=p.split(' ');U[nz(a)]=+b});
-const BIG=new Set(['sau','hazar','hajar','dhai','dedh','sadhe','sava','sawa']);
-const CR=new Set(['udhar','udhare','udhari','credit','likh','likho']);
-const PAY=new Set(['diya','diye','di','jama','paid','pay','mila','mile','wapas','chukaya','chuka','cash','received','aya','laut']);
-const PART=new Set(['ka','ki','ke','ne','ko','se']);
-const WD={ravivar:0,itvar:0,somvar:1,mangalvar:2,budhvar:3,guruvar:4,virvar:4,shukravar:5,shanivar:6};
-const UNDO=new Set(['undo','hatao','hata','cancel','delete','mita','mitao']);
-const isQ=w=>/^(total|totl|kul|kitn|baki|bake|bakaya|hisab|balance|bata)/.test(w);
-const HON=new Set(['bhai','bhaiya','bhae','ji','je','sahab','sahib','saab','uncle','aunty','didi','madam','sir','bhabhi','chacha','mama','kaka','dada','dadi','mami','mausi','bua'].map(nz));
-const STOP=new Set([...HON,'wala','wale','wali',...PART,...CR,...PAY,...BIG,...Object.keys(WD),'tha','thi','the','hai','ho','aj','kal','parso','parson','din','pehle','pichle','pichla','nahi','sorry','galat','matlab','rupaye','rupay','rupiye','rupee','rupees','rs','to','toh','bhi','mera','meri','mere','abhi','pehla','dusra','naya']);
+/* ================= VOCAB (Hindi + English) ================= */
+const U={};
+('ek 1,do 2,teen 3,char 4,panch 5,chhe 6,che 6,saat 7,sat 7,aath 8,ath 8,nau 9,das 10,gyarah 11,barah 12,terah 13,chaudah 14,pandrah 15,solah 16,satrah 17,atharah 18,unnis 19,bis 20,tis 30,chalis 40,pachas 50,saath 60,sath 60,sattar 70,assi 80,nabbe 90,'+
+ 'one 1,two 2,three 3,four 4,five 5,six 6,seven 7,eight 8,nine 9,ten 10,eleven 11,twelve 12,thirteen 13,fourteen 14,fifteen 15,sixteen 16,seventeen 17,eighteen 18,nineteen 19,twenty 20,thirty 30,forty 40,fifty 50,sixty 60,seventy 70,eighty 80,ninety 90')
+ .split(',').forEach(p=>{const a=p.trim().split(' ');U[nz(a[0])]=+a[1]});
+const BIG=new Set(['sau','hazar','hajar','dhai','dedh','sadhe','sava','sawa','hundred','thousand','lakh','lac'].map(nz));
+const isNumWord=w=>w&&(U[w]!==undefined||BIG.has(w));
+
+/* CR = customer owes me (udhaar).  PAY = customer paid me (jama). */
+const CR=new Set(['udhar','udhare','udhari','credit','likh','likho','loan','loans','borrow','borrowed','borrows','took','take','taken','owes','owe','due','lent','gave','give','given','debt','baki','baaki'].map(nz));
+const PAY=new Set(['diya','diye','di','jama','paid','pay','pays','mila','mile','wapas','chukaya','chuka','cash','received','receive','got','get','returned','return','repaid','repay','settled','settle','clear','cleared','back','refund','refunded','laut','deposit','deposited'].map(nz));
+const PART=new Set(['ka','ki','ke','ne','ko','se','of','from'].map(nz));
+const WD={ravivar:0,itvar:0,somvar:1,mangalvar:2,budhvar:3,guruvar:4,virvar:4,shukravar:5,shanivar:6,
+  sunday:0,monday:1,tuesday:2,wednesday:3,thursday:4,friday:5,saturday:6};
+const UNDO=new Set(['undo','hatao','hata','cancel','delete','remove','mita','mitao','erase']);
+const isQ=w=>/^(total|totl|kul|kitn|kitne|kitna|baki|bake|bakaya|hisab|hisaab|balance|bata|batao|due|owe|owes|how|much|account|khata|paisa)/.test(w);
+const HON=new Set(['bhai','bhaiya','bhae','ji','je','sahab','sahib','saab','uncle','aunty','didi','madam','sir','bhabhi','chacha','mama','kaka','dada','dadi','mami','mausi','bua','brother','sister','boss','mr','mrs','ms'].map(nz));
+const STOP=new Set([...HON,'wala','wale','wali',...PART,...CR,...PAY,...BIG,...Object.keys(WD),
+ 'tha','thi','the','hai','ho','aj','kal','parso','parson','din','day','days','pehle','pichle','pichla','nahi','no','not','sorry','galat','matlab',
+ 'rupaye','rupay','rupiye','rupee','rupees','rs','to','toh','bhi','mera','meri','mere','abhi','pehla','dusra','naya','new','aur','and','then',
+ 'me','i','he','she','they','him','her','them','his','my','mine','was','were','is','are','a','an','it','that','this','these','those',
+ 'please','thanks','thank','you','for','with','had','have','has','today','yesterday','ago','before','just','now','also','was'].map(nz));
 const key=s=>{s=nz(s).replace(/h/g,'');return s[0]+s.slice(1).replace(/[aeiouy]/g,'')};
 function lev(a,b){const d=[];for(let i=0;i<=a.length;i++)d[i]=[i];for(let j=1;j<=b.length;j++)d[0][j]=j;
   for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
 
-/* ---------- tokenise, numbers, dates ---------- */
+/* ================= TOKENISE / NUMBERS / DATES ================= */
 function toks(raw){
-  const s=tr(raw).toLowerCase().replace(/₹|\brs\.?(?=\s|\d)/g,' ').replace(/(\d),(?=\d{3})/g,'$1')
-    .replace(/[,;]|\baur\b|\bphir\b|\bfir\b|\band\b/g,' | ').replace(/[^a-z0-9|\s]/g,' ');
+  let s=tr(raw).toLowerCase();
+  s=s.replace(/(\d+(?:\.\d+)?)\s*k\b/g,(m,n)=>String(Math.round(parseFloat(n)*1000)));
+  s=s.replace(/₹|\brs\.?(?=\s|\d)/g,' ').replace(/(\d),(?=\d{3})/g,'$1')
+     .replace(/[,;]|\bphir\b|\bfir\b|\bthen\b/g,' | ')
+     .replace(/[^a-z0-9|\s]/g,' ');
   return s.split(/\s+/).filter(Boolean).map(w=>w==='|'||/^\d/.test(w)?w:nz(w))}
+const isDay=w=>w==='din'||w==='day'||w==='days';
 function numAt(t,i){
   if(/^\d+$/.test(t[i]))return{v:+t[i],n:1};
   let tot=0,cur=0,half=0,k=i,any=false;
   for(;k<t.length;k++){const x=t[k];
-    if(x==='sau'){cur=(cur||1)*100}
-    else if(x==='hazar'||x==='hajar'){tot+=(cur||1)*1000;cur=0}
+    if(any&&(x==='and'||x==='aur')&&isNumWord(t[k+1]))continue;
+    if(x==='sau'||x==='hundred')cur=(cur||1)*100;
+    else if(x==='hazar'||x==='hajar'||x==='thousand'){tot+=(cur||1)*1000;cur=0}
+    else if(x==='lakh'||x==='lac'){tot+=(cur||1)*100000;cur=0}
     else if(x==='dhai')cur=2.5;else if(x==='dedh')cur=1.5;else if(x==='sava'||x==='sawa')cur=1.25;
     else if(x==='sadhe')half=1;
     else if(U[x]!==undefined){cur+=U[x]+half*0.5;half=0}
-    else break;any=true}
+    else break;
+    any=true}
   return any&&tot+cur>0?{v:tot+cur,n:k-i}:null}
 function dateOf(t){
   for(let i=0;i<t.length;i++){const w=t[i];
-    if(w==='aj')return 0;if(w==='kal')return -1;if(w==='parso'||w==='parson')return -2;
+    if(w==='aj'||w==='today')return 0;
+    if(w==='kal')return -1;
+    if(w==='yesterday')return (t[i-1]==='before'&&t[i-2]==='day')?-2:-1;
+    if(w==='parso'||w==='parson')return -2;
     if(WD[w]!==undefined){const diff=(new Date().getDay()-WD[w]+7)%7||7;return -diff}
-    if(/^\d+$/.test(w)&&t[i+1]==='din')return -(+w)}
+    if(/^\d+$/.test(w)&&isDay(t[i+1]))return -(+w)}
   return 0}
 
-/* ---------- split one sentence into entries ---------- */
+/* ================= SEGMENT + PARSE ================= */
 function segs(t){
   const out=[];let c=[],hasA=false;
   const push=()=>{if(c.length)out.push(c);c=[];hasA=false};
   for(let i=0;i<t.length;i++){const w=t[i];
     if(w==='|'){push();continue}
     c.push(w);
-    const m=numAt(t,i);if(m&&t[i+m.n]!=='din')hasA=true;
+    const m=numAt(t,i);if(m&&!isDay(t[i+m.n]))hasA=true;
     if(hasA&&(CR.has(w)||PAY.has(w)))push()}
   push();return out}
 function parseSeg(c){
   let amt=null,type=null;
   for(let i=0;i<c.length;i++){const w=c[i];
-    if(amt===null){const m=numAt(c,i);if(m&&c[i+m.n]!=='din'){amt=m.v;i+=m.n-1;continue}}
+    if(amt===null){const m=numAt(c,i);if(m&&!isDay(c[i+m.n])){amt=m.v;i+=m.n-1;continue}}
     if(CR.has(w))type='cr';else if(PAY.has(w))type='pay'}
   return{amt,type,off:dateOf(c),c}}
 
-/* ---------- customer matching ---------- */
+/* ================= CUSTOMER MATCHING ================= */
 const pn=s=>{s=nz(s.toLowerCase()).replace(/([kgcjtdbps])h/g,(m,a)=>a==='p'?'f':a).replace(/w/g,'v').replace(/z/g,'j').replace(/[qc]/g,'k').replace(/x/g,'ks').replace(/h/g,'').replace(/[eoy]/g,m=>m==='o'?'u':'i');return nz(s)};
 const sk=s=>s[0]+s.slice(1).replace(/[aiu]/g,'');
 function score(w,n){const a=pn(w),b=pn(n);if(!a||!b)return 0;if(a===b)return 1;
@@ -267,34 +421,45 @@ function newName(c){
   if(i<0)i=c.findIndex(w=>/^\d/.test(w)||U[w]!==undefined||BIG.has(w));
   if(i<1)return null;
   const n=[];
-  for(let j=i-1;j>=0&&n.length<2;j--){const w=c[j];if(HON.has(w))continue;if(/^[a-z]{2,}$/.test(w)&&!STOP.has(w)&&U[w]===undefined&&!isQ(w))n.unshift(w);else break}
+  for(let j=i-1;j>=0&&n.length<2;j--){const w=c[j];if(HON.has(w))continue;
+    if(/^[a-z]{2,}$/.test(w)&&!STOP.has(w)&&U[w]===undefined&&!isQ(w))n.unshift(w);else break}
   return n.length?n.map(w=>w[0].toUpperCase()+w.slice(1)).join(' '):null}
 
-/* ---------- output ---------- */
-let flash=[],soundOn=true,uref=null,spokeT=0;
-const IDLE='Mic dabao aur bolo';
+/* ================= SPEECH OUTPUT ================= */
+let flash=[],soundOn=true,uref=null,spokeT=0,VOICES=[];
 const wave=on=>$('wave').classList.toggle('on',on);
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),6000)}
+function loadVoices(){try{VOICES=(window.speechSynthesis&&speechSynthesis.getVoices())||[]}catch(e){VOICES=[]}}
+function pickVoice(){
+  const v=VOICES.length?VOICES:(function(){try{return speechSynthesis.getVoices()||[]}catch(e){return[]}})();
+  if(LANG==='en'){
+    return v.find(x=>/en[-_]IN/i.test(x.lang))||v.find(x=>/^en[-_]GB/i.test(x.lang))||v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang));
+  }
+  return v.find(x=>/en[-_]IN/i.test(x.lang))||v.find(x=>/^hi/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang));
+}
 function speak(t){
   if(!soundOn)return;
-  if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined'){toast('Is browser mein awaaz support nahi hai. Chrome use karo.');return}
+  if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined'){toast(MG.noSpeech);return}
   try{const ss=speechSynthesis;ss.cancel();if(ss.resume)ss.resume();
     setTimeout(()=>{try{
       const u=new SpeechSynthesisUtterance(t);uref=u;
-      const v=ss.getVoices(),vo=v.find(x=>/en[-_]IN/i.test(x.lang))||v.find(x=>/^hi/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang));
-      if(vo){u.voice=vo;u.lang=vo.lang}else u.lang='en-IN';
+      const vo=pickVoice();
+      if(vo){u.voice=vo;u.lang=vo.lang}else u.lang=(LANG==='en'?'en-IN':'hi-IN');
       u.rate=.95;let ok=false;
-      u.onstart=()=>{ok=true;wave(true);$('hint').textContent='Bol raha hoon'};
-      u.onend=()=>{wave(false);$('hint').textContent=IDLE};
-      u.onerror=e=>{wave(false);$('hint').textContent=IDLE;if(e&&e.error&&e.error!=='canceled'&&e.error!=='interrupted')toast('Awaaz error: '+e.error)};
+      u.onstart=()=>{ok=true;wave(true);$('hint').textContent=L.hintSpeak};
+      u.onend=()=>{wave(false);$('hint').textContent=L.hintIdle};
+      u.onerror=e=>{wave(false);$('hint').textContent=L.hintIdle;
+        if(e&&e.error&&e.error!=='canceled'&&e.error!=='interrupted')toast(MG.speakErr(e.error))};
       ss.speak(u);
-      clearTimeout(spokeT);spokeT=setTimeout(()=>{if(!ok)toast('Awaaz nahi nikli. Media volume badhao, ya Settings mein Text-to-speech voice install karo.')},2000);
+      clearTimeout(spokeT);spokeT=setTimeout(()=>{if(!ok)toast(MG.noVoice)},2000);
     }catch(e){}},80)}catch(e){}}
 function say(text,chips,silent){
   const r=$('reply');r.textContent=text;r.classList.remove('in');void r.offsetWidth;r.classList.add('in');
   $('chips').innerHTML=(chips||[]).map(c=>'<span class="chip '+c.k+'">'+esc(c.t)+'</span>').join('');
   $('lat').textContent=T0?'Jawab '+Math.max(1,Math.round(performance.now()-T0))+' ms':'';
   if(!silent)speak(text)}
+
+/* ================= RENDER ================= */
 const AV=[['#F2A900','#12302A'],['#2E7D4F','#fff'],['#C8472B','#fff'],['#3F6C8F','#fff'],['#7A5C9E','#fff']];
 const UP='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
 const DN='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7 7 17M16 17H7V8"/></svg>';
@@ -302,33 +467,39 @@ function render(){
   const cs=[...S.cust].sort((a,b)=>bal(b.id)-bal(a.id)),td=dstr(new Date());
   let ud=0,wa=0;S.ent.forEach(e=>{if(e.date===td){if(e.type==='cr')ud+=e.amt;else wa+=e.amt}});
   tween($('tot'),cs.reduce((a,c)=>a+Math.max(0,bal(c.id)),0));tween($('ud'),ud);tween($('wa'),wa);
-  const tp=cs[0]&&bal(cs[0].id)>0?cs[0]:null;$('top1').textContent=tp?'Sabse zyada baaki: '+label(tp)+', '+money(bal(tp.id)):'';
+  const tp=cs[0]&&bal(cs[0].id)>0?cs[0]:null;
+  $('top1').textContent=tp?L.topMost(label(tp),money(bal(tp.id))):'';
   $('cc').textContent=cs.length;
   $('cl').innerHTML=cs.length?cs.map(c=>{const b=bal(c.id),a=AV[c.id%5];
-    return '<button class="row cust'+(flash.includes(c.id)?' flash':'')+'" data-id="'+c.id+'"><span class="av" style="background:'+a[0]+';color:'+a[1]+'">'+esc(c.name[0].toUpperCase())+'</span><span class="nm">'+esc(c.name)+(c.tag?'<em>'+esc(c.tag)+'</em>':'')+'<small>Hisaab dekho</small></span><span class="amt"><b class="'+(b>0?'cr':b<0?'pay':'')+'">'+money(Math.abs(b))+'</b><small>'+(b>0?'baaki':b<0?'advance':'saaf')+'</small></span></button>'}).join(''):'<div class="empty">Khata khaali hai. Mic dabao aur bolo, jaise “Ramesh ka 100 udhaar”.</div>';
+    return '<button class="row cust'+(flash.includes(c.id)?' flash':'')+'" data-id="'+c.id+'"><span class="av" style="background:'+a[0]+';color:'+a[1]+'">'+esc(c.name[0].toUpperCase())+'</span><span class="nm">'+esc(c.name)+(c.tag?'<em>'+esc(c.tag)+'</em>':'')+'<small>'+esc(L.rowSub)+'</small></span><span class="amt"><b class="'+(b>0?'cr':b<0?'pay':'')+'">'+money(Math.abs(b))+'</b><small>'+(b>0?L.baaki:b<0?L.adv:L.clear)+'</small></span></button>'}).join(''):'<div class="empty">'+esc(L.emptyCust)+'</div>';
   flash=[];
   const h=S.ent.slice(-8).reverse();
-  $('hl').innerHTML=h.length?h.map(e=>'<div class="row"><span class="ic '+e.type+'">'+(e.type==='cr'?UP:DN)+'</span><span class="nm">'+esc(label(custById(e.cid)))+'<small>'+fmtDate(e.date)+'</small></span><span class="amt"><b class="'+e.type+'">'+money(e.amt)+'</b><small>'+(e.type==='cr'?'udhaar':'jama')+'</small></span></div>').join(''):'<div class="empty">Abhi koi entry nahi.</div>'}
+  $('hl').innerHTML=h.length?h.map(e=>'<div class="row"><span class="ic '+e.type+'">'+(e.type==='cr'?UP:DN)+'</span><span class="nm">'+esc(label(custById(e.cid)))+'<small>'+fmtDate(e.date)+'</small></span><span class="amt"><b class="'+e.type+'">'+money(e.amt)+'</b><small>'+(e.type==='cr'?L.cr:L.pay)+'</small></span></div>').join(''):'<div class="empty">'+esc(L.emptyEnt)+'</div>'}
+function tween(el,to){const from=+el.dataset.v||0;el.dataset.v=to;
+  if(typeof requestAnimationFrame!=='function'||from===to){el.textContent=money(to);return}
+  const t0=performance.now(),st=t=>{const k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);el.textContent=money(Math.round(from+(to-from)*e));if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
 
-/* ---------- disambiguation ---------- */
+/* ================= DISAMBIGUATION ================= */
 function ask(cands,nw,resume,heard){
   const ch=cands.map((c,i)=>({c,l:c.tag||('#'+(i+1))}));
   if(nw)ch.push({nw:nw[0].toUpperCase()+nw.slice(1)});
   pending={ch,resume,heard};
-  $('choices').innerHTML=ch.map((x,j)=>'<button class="pick" data-j="'+j+'">'+(j+1)+'. '+esc(x.nw?'Naya: '+x.nw:x.l)+'</button>').join('');
-  const q=cands.length>1&&!nw?'Kaunsa '+cands[0].name+'?':'Kaun sa customer? Pakka karo.';
-  say(q+' '+ch.map((x,j)=>(j+1)+' '+(x.nw?'naya '+x.nw:x.l)).join(', ')+'.')}
-function pick(j){const p=pending;if(!p)return;const x=p.ch[j];pending=null;if(p.heard&&x.c&&!x.nw&&x.c.name&&score(p.heard,x.c.name)<.9){(x.c.alias=x.c.alias||[]).push(p.heard);save()}$('choices').innerHTML='';
-  T0=performance.now();p.resume(x.nw?addCust(x.nw,''):x.c)}
-const ORD={ek:0,pehla:0,do:1,dusra:1,teen:2,tisra:2};
+  $('choices').innerHTML=ch.map((x,j)=>'<button class="pick" data-j="'+j+'">'+(j+1)+'. '+esc(x.nw?MG.newPrefix+x.nw:x.l)+'</button>').join('');
+  const q=(cands.length>1&&!nw)?MG.whichOne(cands[0].name):MG.whichCust;
+  say(q+' '+ch.map((x,j)=>(j+1)+' '+(x.nw?MG.newOpt+' '+x.nw:x.l)).join(', ')+'.')}
+function pick(j){const p=pending;if(!p)return;const x=p.ch[j];pending=null;
+  if(p.heard&&x.c&&!x.nw&&x.c.name&&score(p.heard,x.c.name)<.9){(x.c.alias=x.c.alias||[]).push(p.heard);save()}
+  $('choices').innerHTML='';T0=performance.now();p.resume(x.nw?addCust(x.nw,''):x.c)}
+const ORD={ek:0,pehla:0,do:1,dusra:1,teen:2,tisra:2,one:0,first:0,two:1,second:1,three:2,third:2};
 function pend(t){
   const ch=pending.ch;
-  for(let j=0;j<ch.length;j++){
-    const x=ch[j];
-    if(t.includes(String(j+1))||t.some(w=>ORD[w]===j)||(x.c&&x.c.tag&&t.some(w=>w.length>2&&nz(x.c.tag).includes(w)))||(x.nw&&t.includes('naya'))){pick(j);return true}}
+  for(let j=0;j<ch.length;j++){const x=ch[j];
+    if(t.includes(String(j+1))||t.some(w=>ORD[w]===j)||
+       (x.c&&x.c.tag&&t.some(w=>w.length>2&&nz(x.c.tag).includes(w)))||
+       (x.nw&&(t.includes('naya')||t.includes('new')))){pick(j);return true}}
   return false}
 
-/* ---------- actions ---------- */
+/* ================= ACTIONS ================= */
 function runEntries(ctx,i,last,forced){
   const sl=ctx.sl;
   for(;i<sl.length;i++){const s=sl[i];if(s.amt===null)continue;
@@ -336,41 +507,42 @@ function runEntries(ctx,i,last,forced){
     if(!c){const f=findCust(s.c);
       if(f){if(f.exact&&f.cands.length===1)c=f.cands[0];
         else return ask(f.cands,f.exact?null:f.w,x=>runEntries(ctx,i,last,x),f.w)}
-      else{const nn=newName(s.c);if(nn){c=addCust(nn,'');ctx.notes.push('Naya customer '+nn+' joda.')}else c=last}}
-    if(!c)return say('Kiska hisaab? Naam bolo.');
-    if(!s.type)return say(spoken(c)+' ka '+s.amt+': udhaar ya jama? Dobara bolo.');
+      else{const nn=newName(s.c);if(nn){c=addCust(nn,'');ctx.notes.push(MG.newCustAdded(nn))}else c=last}}
+    if(!c)return say(MG.askName);
+    if(!s.type)return say(MG.askType(spoken(c),s.amt));
     const e=add(c.id,s.amt,s.type,s.off);last=c;ctx.done.push({c,e,off:s.off})}
   S.batch=ctx.done.map(d=>d.e.id);flash=ctx.done.map(d=>d.c.id);save();render();
-  const tot=[...new Set(ctx.done.map(d=>d.c.id))].map(id=>{const c=custById(id),b=bal(id);return spoken(c)+' ka total '+Math.abs(b)+(b>=0?' baaki':' advance')});
-  const txt=ctx.notes.join(' ')+' '+ctx.done.map(d=>spoken(d.c)+' ka '+d.e.amt+(d.e.type==='cr'?' udhaar':' jama')+(d.off?' ('+dword(d.off)+')':'')).join(', ')+' likh diya. '+tot.join('. ')+'.';
-  say(txt.trim(),ctx.done.map(d=>({k:d.e.type,t:label(d.c)+'  '+money(d.e.amt)+'  '+(d.e.type==='cr'?'udhaar':'jama')+'  '+dword(d.off)})))}
+  const ids=[...new Set(ctx.done.map(d=>d.c.id))];
+  const tot=ids.map(id=>{const b=bal(id);return MG.totalOf(spoken(custById(id)),b)});
+  const lines=ctx.done.map(d=>MG.added(spoken(d.c),d.e.amt,d.e.type,d.off));
+  const txt=[...ctx.notes,...lines,...tot].join(' ');
+  say(txt,ctx.done.map(d=>({k:d.e.type,t:label(d.c)+'  '+money(d.e.amt)+'  '+(d.e.type==='cr'?L.cr:L.pay)+'  '+dword(d.off)})))}
 function answer(c){
   flash=[c.id];render();const b=bal(c.id);
-  const txt=b>0?spoken(c)+' ka '+b+' rupaye baaki hai.':b<0?spoken(c)+' ne '+(-b)+' rupaye zyada diye hain.':spoken(c)+' ka hisaab saaf hai.';
-  say(txt,S.ent.filter(e=>e.cid===c.id).slice(-3).map(e=>({k:e.type,t:(e.type==='cr'?'udhaar ':'jama ')+money(e.amt)+'  '+fmtDate(e.date)})))}
+  say(MG.bal(spoken(c),b),S.ent.filter(e=>e.cid===c.id).slice(-3).map(e=>({k:e.type,t:(e.type==='cr'?L.cr:L.pay)+' '+money(e.amt)+'  '+fmtDate(e.date)})))}
 function query(t){
-  const f=findCust(t);if(!f)return say('Kiska total? Naam bolo.');
+  const f=findCust(t);if(!f)return say(MG.askTotalName);
   if(f.exact&&f.cands.length===1)return answer(f.cands[0]);
   ask(f.cands,f.exact?null:f.w,answer,f.w)}
 function correct(sl,t){
   const a=sl.find(s=>s.amt!==null),ty=t.some(w=>CR.has(w))?'cr':t.some(w=>PAY.has(w))?'pay':null;
   let es=(S.batch||[]).map(id=>S.ent.find(x=>x.id===id)).filter(Boolean);
   if(!es.length){const e=S.ent.find(x=>x.id===S.last);if(e)es=[e]}
-  if(!es.length)return say('Sudharne ke liye pichli entry nahi mili.');
+  if(!es.length)return say(MG.noEntryFix);
   if(a&&ty){const m=es.filter(e=>e.type===ty);if(m.length===1)es=m}
   const fix=e=>{
     if(a)e.amt=a.amt;else if(ty)e.type=ty;
     flash=[e.cid];save();render();const c=custById(e.cid),b=bal(c.id);
-    say('Theek hai, '+spoken(c)+' ka '+e.amt+(e.type==='cr'?' udhaar':' jama')+' kar diya. Total '+Math.abs(b)+(b>=0?' baaki.':' advance.'),[{k:e.type,t:label(c)+'  '+money(e.amt)+'  '+(e.type==='cr'?'udhaar':'jama')}])};
+    say(MG.fixed(spoken(c),e.amt,e.type,b),[{k:e.type,t:label(c)+'  '+money(e.amt)+'  '+(e.type==='cr'?L.cr:L.pay)}])};
   if(es.length===1)return fix(es[0]);
-  const ch=es.map(e=>({c:e,l:(e.type==='cr'?'udhaar ':'jama ')+money(e.amt)}));
+  const ch=es.map(e=>({c:e,l:(e.type==='cr'?L.cr:L.pay)+' '+money(e.amt)}));
   pending={ch,resume:fix};
   $('choices').innerHTML=ch.map((x,j)=>'<button class="pick" data-j="'+j+'">'+(j+1)+'. '+esc(x.l)+'</button>').join('');
-  say('Kaunsi entry sudharni hai? '+ch.map((x,j)=>(j+1)+' '+x.l).join(', ')+'.')}
+  say(MG.whichEntry+' '+ch.map((x,j)=>(j+1)+' '+x.l).join(', ')+'.')}
 function undo(){
-  const i=S.ent.findIndex(x=>x.id===S.last);if(i<0)return say('Hatane ke liye kuch nahi.');
+  const i=S.ent.findIndex(x=>x.id===S.last);if(i<0)return say(MG.nothingUndo);
   const e=S.ent.splice(i,1)[0];S.last=S.ent.length?S.ent[S.ent.length-1].id:0;save();render();
-  say(spoken(custById(e.cid))+' ka '+e.amt+' hata diya.')}
+  say(MG.undone(spoken(custById(e.cid)),e.amt))}
 
 function run(raw){
   T0=performance.now();$('heard').textContent=raw;
@@ -379,27 +551,77 @@ function run(raw){
   pending=null;$('choices').innerHTML='';
   const sl=segs(t).map(parseSeg),hasAmt=sl.some(s=>s.amt!==null);
   if(!hasAmt&&t.some(w=>UNDO.has(w)))return undo();
-  const corr=t[0]&&(t[0].startsWith('nah')||['galat','matlab','sorry'].includes(t[0]));
+  const corr=t[0]&&(t[0].startsWith('nah')||t[0].startsWith('no')||['galat','matlab','sorry','wrong'].includes(t[0]));
   if(corr&&(hasAmt||t.some(w=>CR.has(w)||PAY.has(w))))return correct(sl,t);
   if(!hasAmt&&t.some(isQ))return query(t);
   if(hasAmt)return runEntries({sl,notes:[],done:[]},0,null,null);
-  say('Samajh nahi aaya. Aise bolo: “Ramesh ka 340 udhaar” ya “Ramesh ka total?”')}
+  say(MG.notUnderstood)}
 
-/* ---------- mic ---------- */
+/* ================= MIC ================= */
 let rec=null,final='';
 function mic(){
-  if(rec){rec.stop();return}
+  if(rec){final='';try{rec.stop()}catch(e){};return}
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SR){T0=0;say('Is browser mein mic nahi chalta. Chrome (Android) kholo, ya neeche type karo.',[],true);return}
+  if(!SR){T0=0;say(MG.micNo,[],true);return}
   try{speechSynthesis.cancel()}catch(e){}
   rec=new SR();rec.lang=$('lang').value;rec.interimResults=true;rec.continuous=false;final='';
-  rec.onstart=()=>{$('mic').classList.add('on');$('hint').textContent='Sun raha hoon';wave(true);$('heard').textContent=''};
+  rec.onstart=()=>{$('mic').classList.add('on');$('hint').textContent=L.hintListen;wave(true);$('heard').textContent=''};
   rec.onresult=e=>{let s='';for(const r of e.results)s+=r[0].transcript;final=s;$('heard').textContent=s};
-  rec.onerror=e=>{final='';T0=0;say(e.error==='not-allowed'||e.error==='service-not-allowed'?'Mic ki permission band hai. Page ko seedha Chrome tab mein kholo aur Allow karo, ya neeche type karo.':'Awaaz sunai nahi di ('+e.error+'). Dobara dabao.',[],true)};
-  rec.onend=()=>{rec=null;$('mic').classList.remove('on');wave(false);$('hint').textContent=IDLE;if(final)run(final)};
+  rec.onerror=e=>{final='';T0=0;
+    say((e.error==='not-allowed'||e.error==='service-not-allowed')?MG.micDenied:MG.micErr(e.error),[],true)};
+  rec.onend=()=>{rec=null;$('mic').classList.remove('on');wave(false);$('hint').textContent=L.hintIdle;if(final)run(final)};
   try{rec.start()}catch(e){rec=null}}
 
-/* ---------- wire up ---------- */
+/* ================= STATIC LABELS ================= */
+function applyStatic(){
+  $('slogan').textContent=L.slogan;
+  $('lTotal').textContent=L.total;
+  $('lTodayCr').textContent=L.todayCr;
+  $('lTodayPay').textContent=L.todayPay;
+  $('lTry').textContent=L.tryH;
+  $('lCust').textContent=L.customers;
+  $('lHist').textContent=L.history;
+  $('addtog').textContent=L.newCust;
+  $('undo').textContent=L.undoBtn;
+  $('nn').placeholder=L.namePh;
+  $('nt').placeholder=L.tagPh;
+  $('na').textContent=L.addBtn;
+  $('ti').placeholder=L.typePh;
+  $('lFoot').textContent=L.foot;
+  $('hint').textContent=L.hintIdle;
+  if(!pending)$('reply').textContent=L.idleReply;
+  document.documentElement.lang=(LANG==='en'?'en':'hi');}
+function buildExamples(){
+  $('ex').innerHTML='';
+  L.examples.forEach(x=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>run(x);$('ex').appendChild(b)});
+  const vt=document.createElement('button');vt.textContent=L.voiceTest;
+  vt.onclick=()=>{T0=0;say(MG.voiceOk)};$('ex').appendChild(vt)}
+
+/* ================= SHEETS ================= */
+function openSheet(h){$('sbody').innerHTML=h;$('ov').classList.add('open');$('sheet').classList.add('open');$('sheet').setAttribute('aria-hidden','false')}
+function closeSheet(){$('ov').classList.remove('open');$('sheet').classList.remove('open');$('sheet').setAttribute('aria-hidden','true')}
+let cfn=null;
+function confirmSheet(t,p,ok,fn){cfn=fn;openSheet('<h3 class="sh-title">'+esc(t)+'</h3><p class="sh-p">'+esc(p)+'</p><div class="sh-a"><button class="btn" data-a="no">'+esc(MG.no)+'</button><button class="btn dng" data-a="ok">'+esc(ok)+'</button></div>')}
+function custSheet(id){
+  const c=S.cust.find(x=>x.id===id);if(!c)return;const b=bal(id),a=AV[id%5],es=S.ent.filter(e=>e.cid===id).reverse();
+  openSheet('<div class="sh-h"><span class="av lg" style="background:'+a[0]+';color:'+a[1]+'">'+esc(c.name[0].toUpperCase())+'</span><div><div class="sh-n">'+esc(c.name)+'</div><div class="sh-t">'+esc(c.tag||L.noTag)+'</div></div></div>'
+   +'<div class="sh-bal '+(b>0?'cr':b<0?'pay':'')+'">'+money(Math.abs(b))+'<small>'+(b>0?L.baaki:b<0?L.adv:L.clear)+'</small></div>'
+   +'<div class="list">'+(es.length?es.map(e=>'<div class="row"><span class="ic '+e.type+'">'+(e.type==='cr'?UP:DN)+'</span><span class="nm">'+(e.type==='cr'?L.cr:L.pay)+'<small>'+fmtDate(e.date)+'</small></span><span class="amt"><b class="'+e.type+'">'+money(e.amt)+'</b></span></div>').join(''):'<div class="empty">'+esc(L.emptyEnt)+'</div>')+'</div>'
+   +'<div class="sh-a"><button class="btn pri" data-a="say" data-id="'+id+'">'+esc(L.sayBal)+'</button><button class="btn dng" data-a="del" data-id="'+id+'">'+esc(L.delCust)+'</button></div>')}
+function cfgSheet(){openSheet('<h3 class="sh-title">'+esc(L.settings)+'</h3><p class="sh-p">'+esc(L.savedInfo(S.cust.length,S.ent.length))+'</p>'
+  +'<button class="opt" data-a="how">'+esc(L.how)+'<small>'+esc(L.howSub)+'</small></button>'
+  +'<button class="opt" data-a="test">'+esc(L.voiceTest)+'<small>'+esc(L.voiceTestSub)+'</small></button>'
+  +'<button class="opt" data-a="demo">'+esc(L.demo)+'<small>'+esc(L.demoSub)+'</small></button>'
+  +'<button class="opt dng" data-a="clear">'+esc(L.clearAll)+'<small>'+esc(L.clearAllSub)+'</small></button>')}
+function howSheet(){openSheet('<h3 class="sh-title">'+esc(L.howTitle)+'</h3><p class="sh-p">'+esc(L.howP)+'</p><ul class="steps">'
+  +L.steps.map(s=>'<li><b>'+esc(s[0])+'</b><span>'+esc(s[1])+'</span></li>').join('')+'</ul>')}
+function delCust(id){const c=custById(id);S.cust=S.cust.filter(x=>x.id!==id);S.ent=S.ent.filter(e=>e.cid!==id);
+  S.batch=(S.batch||[]).filter(i=>S.ent.some(e=>e.id===i));
+  if(!S.ent.some(e=>e.id===S.last))S.last=S.ent.length?S.ent[S.ent.length-1].id:0;save();render();T0=0;say(MG.custDeleted(c.name),[],true)}
+function clearAll(){pending=null;$('choices').innerHTML='';$('heard').textContent='';S={cust:[],ent:[],n:1,last:0,batch:[]};save();render();T0=0;
+  say(MG.cleared,[],true)}
+
+/* ================= WIRE UP ================= */
 $('mic').onclick=mic;
 const send=()=>{const v=$('ti').value.trim();if(v){$('ti').value='';run(v)}};
 $('go').onclick=send;$('ti').onkeydown=e=>{if(e.key==='Enter')send()};
@@ -407,53 +629,37 @@ $('choices').onclick=e=>{const b=e.target.closest('button');if(b)pick(+b.dataset
 $('undo').onclick=()=>{T0=performance.now();undo()};
 $('cl').onclick=e=>{const b=e.target.closest('.cust');if(b)custSheet(+b.dataset.id)};
 $('addtog').onclick=()=>{const a=$('addbox');a.hidden=!a.hidden;if(!a.hidden)$('nn').focus()};
-$('na').onclick=()=>{const n=$('nn').value.trim();if(!n)return;const c=addCust(n[0].toUpperCase()+n.slice(1),$('nt').value.trim());flash=[c.id];$('nn').value='';$('nt').value='';$('addbox').hidden=true;save();render();T0=0;say(n+' jod diya.',[],true)};
-function tween(el,to){const from=+el.dataset.v||0;el.dataset.v=to;
-  if(typeof requestAnimationFrame!=='function'||from===to){el.textContent=money(to);return}
-  const t0=performance.now(),st=t=>{const k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);el.textContent=money(Math.round(from+(to-from)*e));if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
-function openSheet(h){$('sbody').innerHTML=h;$('ov').classList.add('open');$('sheet').classList.add('open');$('sheet').setAttribute('aria-hidden','false')}
-function closeSheet(){$('ov').classList.remove('open');$('sheet').classList.remove('open');$('sheet').setAttribute('aria-hidden','true')}
-let cfn=null;
-function confirmSheet(t,p,ok,fn){cfn=fn;openSheet('<h3 class="sh-title">'+esc(t)+'</h3><p class="sh-p">'+esc(p)+'</p><div class="sh-a"><button class="btn" data-a="no">Nahi, rehne do</button><button class="btn dng" data-a="ok">'+esc(ok)+'</button></div>')}
-function custSheet(id){
-  const c=S.cust.find(x=>x.id===id);if(!c)return;const b=bal(id),a=AV[id%5],es=S.ent.filter(e=>e.cid===id).reverse();
-  openSheet('<div class="sh-h"><span class="av lg" style="background:'+a[0]+';color:'+a[1]+'">'+esc(c.name[0].toUpperCase())+'</span><div><div class="sh-n">'+esc(c.name)+'</div><div class="sh-t">'+esc(c.tag||'Koi pehchaan nahi')+'</div></div></div>'
-   +'<div class="sh-bal '+(b>0?'cr':b<0?'pay':'')+'">'+money(Math.abs(b))+'<small>'+(b>0?'baaki':b<0?'advance':'hisaab saaf')+'</small></div>'
-   +'<div class="list">'+(es.length?es.map(e=>'<div class="row"><span class="ic '+e.type+'">'+(e.type==='cr'?UP:DN)+'</span><span class="nm">'+(e.type==='cr'?'Udhaar':'Jama')+'<small>'+fmtDate(e.date)+'</small></span><span class="amt"><b class="'+e.type+'">'+money(e.amt)+'</b></span></div>').join(''):'<div class="empty">Abhi koi entry nahi.</div>')+'</div>'
-   +'<div class="sh-a"><button class="btn pri" data-a="say" data-id="'+id+'">Balance sunao</button><button class="btn dng" data-a="del" data-id="'+id+'">Customer hatao</button></div>')}
-function cfgSheet(){openSheet('<h3 class="sh-title">Settings</h3><p class="sh-p">'+S.cust.length+' customers aur '+S.ent.length+' entries is phone mein save hain.</p>'
-  +'<button class="opt" data-a="how">Yeh kaise kaam karta hai<small>Awaaz se entry tak ka poora flow</small></button>'
-  +'<button class="opt" data-a="test">Awaaz check<small>Phone bol raha hai ya nahi, test karo</small></button>'
-  +'<button class="opt" data-a="demo">Demo data bharo<small>Do Ramesh aur ek Suresh ke saath, try karne ke liye</small></button>'
-  +'<button class="opt dng" data-a="clear">Saara data hatao<small>Sab customers aur entries hamesha ke liye hat jayengi</small></button>')}
-function howSheet(){openSheet('<h3 class="sh-title">Yeh kaise kaam karta hai</h3><p class="sh-p">Har entry in paanch kadam se guzarti hai.</p><ul class="steps">'
-  +'<li><b>Mic dabao aur bolo</b><span>Browser ki speech recognition awaaz ko text banati hai.</span></li>'
-  +'<li><b>Text saaf hota hai</b><span>Hindi script Roman banti hai, aur “dhai sau” jaise shabd 250 ban jaate hain.</span></li>'
-  +'<li><b>Rules samajhte hain</b><span>Naam, rakam, udhaar ya jama, aur kal ya parso jaisi date alag nikalte hain. Koi AI call nahi.</span></li>'
-  +'<li><b>Naam pehchaan</b><span>Milte-julte naam match hote hain, bhai ya ji jaise shabd hat jaate hain. Do ek jaise naam hon to puchta hai, aur jawab yaad rakhta hai.</span></li>'
-  +'<li><b>Save aur jawab</b><span>Entry phone mein save hoti hai, balance code se nikalta hai, phir awaaz mein bolta hai.</span></li></ul>')}
-function delCust(id){const c=custById(id);S.cust=S.cust.filter(x=>x.id!==id);S.ent=S.ent.filter(e=>e.cid!==id);S.batch=(S.batch||[]).filter(i=>S.ent.some(e=>e.id===i));
-  if(!S.ent.some(e=>e.id===S.last))S.last=S.ent.length?S.ent[S.ent.length-1].id:0;save();render();T0=0;say(c.name+' hata diya.',[],true)}
-function clearAll(){pending=null;$('choices').innerHTML='';$('heard').textContent='';S={cust:[],ent:[],n:1,last:0,batch:[]};save();render();T0=0;
-  say('Saara data hat gaya. Ab pehla customer bolo, jaise “Ramesh ka 100 udhaar”.',[],true)}
+$('na').onclick=()=>{const n=$('nn').value.trim();if(!n)return;
+  const c=addCust(n[0].toUpperCase()+n.slice(1),$('nt').value.trim());
+  flash=[c.id];$('nn').value='';$('nt').value='';$('addbox').hidden=true;save();render();T0=0;say(MG.addedCust(n),[],true)};
+
 $('cfg').onclick=cfgSheet;$('ov').onclick=closeSheet;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
 $('sbody').onclick=e=>{const b=e.target.closest('button[data-a]');if(!b)return;const a=b.dataset.a,id=+b.dataset.id;
   if(a==='say'){closeSheet();T0=performance.now();answer(custById(id))}
-  else if(a==='del'){const c=custById(id);confirmSheet(c.name+' hatao?','Iski saari entries bhi hat jayengi. Yeh wapas nahi hoga.','Haan, hatao',()=>delCust(id))}
-  else if(a==='clear')confirmSheet('Saara data hatao?','Sab customers aur entries hat jayengi. Yeh wapas nahi hoga.','Haan, sab hatao',clearAll)
-  else if(a==='demo')confirmSheet('Demo data bharo?','Abhi ka saara data hat jayega aur demo customers aa jayenge.','Haan, bharo',()=>{seed();render();T0=0;say('Demo data aa gaya.',[],true)})
-  else if(a==='test'){closeSheet();T0=0;say('Namaste. Agar yeh sunai de raha hai, to awaaz theek hai.')}
+  else if(a==='del'){const c=custById(id);confirmSheet(MG.confirmTitleDel(c.name),MG.confirmBodyDel,MG.confirmOkDel,()=>delCust(id))}
+  else if(a==='clear')confirmSheet(MG.confirmTitleClear,MG.confirmBodyClear,MG.confirmOkClear,clearAll)
+  else if(a==='demo')confirmSheet(MG.confirmTitleDemo,MG.confirmBodyDemo,MG.confirmOkDemo,()=>{seed();render();T0=0;say(MG.demoLoaded,[],true)})
+  else if(a==='test'){closeSheet();T0=0;say(MG.voiceOk)}
   else if(a==='how')howSheet()
   else if(a==='ok'){closeSheet();const f=cfn;cfn=null;if(f)f()}
   else if(a==='no')closeSheet()};
 
-$('snd').onclick=()=>{soundOn=!soundOn;$('snd').setAttribute('aria-pressed',String(soundOn));$('snd').classList.toggle('off',!soundOn);if(!soundOn){try{speechSynthesis.cancel()}catch(e){}}toast(soundOn?'Awaaz chalu':'Awaaz band')};
-document.addEventListener('pointerdown',()=>{try{speechSynthesis.speak(new SpeechSynthesisUtterance(''))}catch(e){}},{once:true});
-['Ramesh ka 340 udhaar, kal 200 diya tha','nahi, 430','Ramesh ka total?','Suresh ka dhai sau udhaar','Suresh ka total'].forEach(x=>{
-  const b=document.createElement('button');b.textContent=x;b.onclick=()=>run(x);$('ex').appendChild(b)});
-const vt=document.createElement('button');vt.textContent='Awaaz check';vt.onclick=()=>{T0=0;say('Namaste. Agar yeh sunai de raha hai, to awaaz theek hai.')};$('ex').appendChild(vt);
-load();render();
+$('snd').onclick=()=>{soundOn=!soundOn;$('snd').setAttribute('aria-pressed',String(soundOn));$('snd').classList.toggle('off',!soundOn);
+  if(!soundOn){try{speechSynthesis.cancel()}catch(e){}}
+  toast(soundOn?L.soundOn:L.soundOff)};
+
+$('lang').onchange=()=>{
+  final='';if(rec){try{rec.stop()}catch(e){}}
+  pending=null;$('choices').innerHTML='';$('chips').innerHTML='';$('heard').textContent='';$('lat').textContent='';
+  try{speechSynthesis.cancel()}catch(e){}
+  setLang();applyStatic();buildExamples();render();toast(L.langToast)};
+
+if('speechSynthesis' in window){loadVoices();
+  try{speechSynthesis.onvoiceschanged=loadVoices}catch(e){}}
+document.addEventListener('pointerdown',()=>{try{loadVoices();speechSynthesis.speak(new SpeechSynthesisUtterance(''))}catch(e){}},{once:true});
+
+setLang();load();applyStatic();buildExamples();render();
 })();
 </script>
 </body></html>
