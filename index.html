@@ -206,6 +206,7 @@ hi:{
     micNo:'Is browser mein mic nahi chalta. Chrome (Android) kholo, ya neeche type karo.',
     micDenied:'Mic ki permission band hai. Page ko seedha Chrome tab mein kholo aur Allow karo, ya neeche type karo.',
     micErr:e=>'Awaaz sunai nahi di ('+e+'). Dobara dabao.',
+    heardNothing:'Kuch sunai nahi diya. Mic dabao aur dobara bolo.',
     noSpeech:'Is browser mein awaaz support nahi hai. Chrome use karo.',
     noVoice:'Awaaz nahi nikli. Media volume badhao, ya Settings mein Text-to-speech voice install karo.',
     speakErr:e=>'Awaaz error: '+e,
@@ -268,6 +269,7 @@ en:{
     micNo:'Mic does not work in this browser. Open in Chrome (Android), or type below.',
     micDenied:'Mic permission is blocked. Open the page directly in a Chrome tab and tap Allow, or type below.',
     micErr:e=>'Could not hear that ('+e+'). Tap again.',
+    heardNothing:'I didn\'t hear anything. Tap the mic and try again.',
     noSpeech:'This browser has no speech support. Use Chrome.',
     noVoice:'No sound came out. Raise media volume, or install a Text-to-speech voice in Settings.',
     speakErr:e=>'Speech error: '+e,
@@ -290,6 +292,7 @@ function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 const dstr=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
 const dayOff=n=>{const d=new Date();d.setDate(d.getDate()+n);return dstr(d)};
+const money=n=>'₹'+(Number(n)||0).toLocaleString('en-IN');   /* <-- was missing */
 function seed(){S={cust:[],ent:[],n:1,last:0};
   const a=addCust('Ramesh','Sharma'),b=addCust('Ramesh','Gali wala'),c=addCust('Suresh','');
   add(a.id,500,'cr',-5);add(a.id,100,'pay',-3);add(a.id,140,'cr',-1);add(b.id,250,'cr',-2);add(c.id,120,'cr',-4);save()}
@@ -341,8 +344,7 @@ const STOP=new Set([...HON,'wala','wale','wali',...PART,...CR,...PAY,...BIG,...O
  'tha','thi','the','hai','ho','aj','kal','parso','parson','din','day','days','pehle','pichle','pichla','nahi','no','not','sorry','galat','matlab',
  'rupaye','rupay','rupiye','rupee','rupees','rs','to','toh','bhi','mera','meri','mere','abhi','pehla','dusra','naya','new','aur','and','then',
  'me','i','he','she','they','him','her','them','his','my','mine','was','were','is','are','a','an','it','that','this','these','those',
- 'please','thanks','thank','you','for','with','had','have','has','today','yesterday','ago','before','just','now','also','was'].map(nz));
-const key=s=>{s=nz(s).replace(/h/g,'');return s[0]+s.slice(1).replace(/[aeiouy]/g,'')};
+ 'please','thanks','thank','you','for','with','had','have','has','today','yesterday','ago','before','just','now','also'].map(nz));
 function lev(a,b){const d=[];for(let i=0;i<=a.length;i++)d[i]=[i];for(let j=1;j<=b.length;j++)d[0][j]=j;
   for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]}
 
@@ -558,18 +560,23 @@ function run(raw){
   say(MG.notUnderstood)}
 
 /* ================= MIC ================= */
-let rec=null,final='';
+let rec=null,final='',recErr=false,quietStop=false;
 function mic(){
-  if(rec){final='';try{rec.stop()}catch(e){};return}
+  if(rec){try{rec.stop()}catch(e){};return}   /* keep final intact while stopping */
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SR){T0=0;say(MG.micNo,[],true);return}
   try{speechSynthesis.cancel()}catch(e){}
-  rec=new SR();rec.lang=$('lang').value;rec.interimResults=true;rec.continuous=false;final='';
+  rec=new SR();rec.lang=$('lang').value;rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=1;
+  final='';recErr=false;
   rec.onstart=()=>{$('mic').classList.add('on');$('hint').textContent=L.hintListen;wave(true);$('heard').textContent=''};
-  rec.onresult=e=>{let s='';for(const r of e.results)s+=r[0].transcript;final=s;$('heard').textContent=s};
-  rec.onerror=e=>{final='';T0=0;
+  rec.onresult=e=>{let s='';for(const r of e.results)s+=r[0].transcript;final=s.trim();$('heard').textContent=s};
+  rec.onerror=e=>{recErr=true;final='';T0=0;
     say((e.error==='not-allowed'||e.error==='service-not-allowed')?MG.micDenied:MG.micErr(e.error),[],true)};
-  rec.onend=()=>{rec=null;$('mic').classList.remove('on');wave(false);$('hint').textContent=L.hintIdle;if(final)run(final)};
+  rec.onend=()=>{rec=null;$('mic').classList.remove('on');wave(false);$('hint').textContent=L.hintIdle;
+    const txt=final;final='';
+    if(txt)run(txt);
+    else if(!recErr&&!quietStop){T0=0;say(MG.heardNothing,[],true)}
+    quietStop=false};
   try{rec.start()}catch(e){rec=null}}
 
 /* ================= STATIC LABELS ================= */
@@ -650,7 +657,8 @@ $('snd').onclick=()=>{soundOn=!soundOn;$('snd').setAttribute('aria-pressed',Stri
   toast(soundOn?L.soundOn:L.soundOff)};
 
 $('lang').onchange=()=>{
-  final='';if(rec){try{rec.stop()}catch(e){}}
+  quietStop=true;
+  if(rec){try{rec.stop()}catch(e){}}
   pending=null;$('choices').innerHTML='';$('chips').innerHTML='';$('heard').textContent='';$('lat').textContent='';
   try{speechSynthesis.cancel()}catch(e){}
   setLang();applyStatic();buildExamples();render();toast(L.langToast)};
