@@ -24,7 +24,7 @@ From Paper Khata to a Voice-Powered Digital Ledger, built for small shopkeepers.
 
 | Dashboard | Customers | Recent entries |
 |:---:|:---:|:---:|
-| <img src="https://raw.githubusercontent.com/kernel-ux/voice/main/Screenshot_2026-11-13-13-05-53-15_e4424258c8b8649f6e67d283a50a2cbc.jpg.jpeg" width="240" alt="Dashboard"> | <img src="https://raw.githubusercontent.com/kernel-ux/voice/main/Screenshot_2026-11-13-13-06-05-35_e4424258c8b8649f6e67d283a50a2cbc.jpg.jpeg" width="240" alt="Customers"> | <img src="https://raw.githubusercontent.com/kernel-ux/voice/main/Screenshot_2026-11-13-13-06-21-52_e4424258c8b8649f6e67d283a50a2cbc.jpg.jpeg" width="240" alt="Recent entries"> |
+| <img src="https://raw.githubusercontent.com/kernel-ux/voice/main/Screenshot_2026-11-13-13-05-53-15_e4424258c8b8649f6e67d283a50a2cbc.jpg.jpeg" width="240" alt="Dashboard"> | <img src="https://raw.githubusercontent.com/kernel-ux/voice/main/Screenshot_2026-11-13-13-08-45-13_f02e9a577c6c5d0cce1aeb8fd5e.jpg.jpeg" width="240" alt="Customers"> | <img src="https://raw.githubusercontent.com/kernel-ux/voice/main/Screenshot_2026-11-13-13-10-03-37_65d6b5f3b9b3ffde4f46b4b4cb6608d7.jpg.jpeg" width="240" alt="Recent entries"> |
 
 </div>
 
@@ -32,7 +32,7 @@ From Paper Khata to a Voice-Powered Digital Ledger, built for small shopkeepers.
 
 ## 💡 The problem
 
-A shopkeeper in the middle of a sale can't stop to write or type. So *udhaar* (credit) gets noted late, noted wrong, or never noted at all. Owners lose money on forgotten udhaar, and customers get blamed for amounts they don't owe.
+A shopkeeper in the middle of a sale can't stop to write or type. So *udhaar* (credit) gets noted late, noted wrong, or never noted at all. Owners lose money on forgotten udhaar, and customers get blamed unfairly.
 
 | Today's options | Why they fail |
 |---|---|
@@ -184,13 +184,17 @@ Ideas we plan to build on top of this prototype:
 
 ---
 
-## 👥 Team
+## 👥 Team & contributions
 
 | | |
 |---|---|
 | **Team name** | team π |
 | **Team ID** | team-B749B01B982F |
 | **Theme** | From Paper Khata to Voice-Powered Digital Ledger |
+
+### NIRMAL KM
+
+NIRMAL KM contributed to **shaping the idea** and **implementing major features** of Voice Khata, helping turn the concept into a working voice-powered digital ledger.
 
 ---
 
